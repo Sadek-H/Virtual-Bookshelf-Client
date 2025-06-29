@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ImBooks } from "react-icons/im";
 const Banner = () => {
   return (
-    <div className="bg-white text-center pt-16 pb-10">
+    <div className="bg-white text-center pt-10 pb-10">
       {/* Headline Section */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

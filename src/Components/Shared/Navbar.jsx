@@ -70,7 +70,7 @@ const Navbar = () => {
       </div>
 
      {openbar && (
-  <div className="w-screen lg:hidden mt-3 rounded-lg bg-blue-100 px-6 py-4 animate-fade-down">
+  <div className="w-full lg:hidden mt-4 rounded-lg bg-blue-100 px-6 py-6 animate-fade-down ">
     <div className="flex flex-col justify-start gap-4 text-lg font-semibold text-gray-800 w-max">
       <NavLink to="/" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
         Home
