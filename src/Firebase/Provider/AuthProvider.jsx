@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, getIdToken, GoogleAuthProvider, onAuthS
 
 const Provider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
+  const [loading,setLoading] = useState(true);
     const [user,setUser] = useState(null);
       const [token, setToken] = useState(null);
     const createUser = (email, password) => {
@@ -20,8 +21,10 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
     useEffect(()=>{
+     
         const unsubscribe = onAuthStateChanged(auth, async(currentUser)=>{
             setUser(currentUser);
+            setLoading(false)
             
       if (currentUser) {
         const idToken = await getIdToken(currentUser, true); // get fresh token
@@ -33,7 +36,7 @@ const AuthProvider = ({children}) => {
       return()=>{
         unsubscribe();
       }
-       
+      
     })
 
     const authdata={
@@ -42,7 +45,8 @@ const AuthProvider = ({children}) => {
         Signin,
         googleSignin,
         signOutuser,
-        token
+        token,
+        loading
         
     }
     return  <AuthContext value={authdata}>{children}</AuthContext>;

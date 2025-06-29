@@ -19,7 +19,7 @@ const PopularBooks = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
       <p className="text-center text-indigo-500 font-semibold">SHOP ONLINE</p>
-      <h2 className="text-4xl font-bold text-center  mb-14">
+      <h2 className="text-2xl md:text-3xl font-bold text-center  mb-10">
          Popular Books
       </h2>
 

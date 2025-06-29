@@ -31,7 +31,7 @@ const FAQSection=()=> {
   return (
     <section className=" py-14">
       <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8"> <span className='text-blue-500'>Reading</span> FAQs</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8"> <span className='text-blue-500'>Reading</span> FAQs</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="border border-gray-200 rounded-xl overflow-hidden">

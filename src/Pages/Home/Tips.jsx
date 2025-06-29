@@ -44,7 +44,7 @@ const Tips = () => {
       <div className="max-w-6xl mx-auto px-6">
        <div className="flex items-center justify-center gap-1 mb-8">
          <MdTipsAndUpdates className="text-2xl text-yellow-500"/>
-        <h2 className="text-3xl font-bold  text-center text-gray-900">
+        <h2 className="text-2xl md:text-3xl font-bold  text-center text-gray-900">
            Reading <span className="text-blue-500">Tips & Motivation</span>
         </h2>
        </div>
