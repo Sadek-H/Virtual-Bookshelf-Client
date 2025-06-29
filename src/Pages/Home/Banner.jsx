@@ -11,16 +11,13 @@ const Banner = () => {
         transition={{ duration: 0.6 }}
         className="space-y-2 mb-6"
       >
-       <div className="flex justify-center">
-         <ImBooks className="text-5xl" />
-        <h1 className="text-4xl font-extrabold text-gray-900">
-           Book App
-        </h1>
-       </div>
+        <div className="flex justify-center">
+          <ImBooks className="text-5xl" />
+          <h1 className="text-4xl font-extrabold text-gray-900">Book App</h1>
+        </div>
         <p className="text-gray-500 text-base">
           Explore book app designs for inspiration
         </p>
-
       </motion.div>
 
       {/* Carousel Section */}
@@ -35,7 +32,9 @@ const Banner = () => {
           {/* Overlay content */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/10 z-10"></div>
           <div className="absolute left-8 top-1/3 text-left z-20 text-white space-y-3">
-            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">Fuel Your Reading Habit</h2>
+            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">
+              Fuel Your Reading Habit
+            </h2>
             <p className="text-sm md:text-base max-w-md">
               Track, explore and review books all in one beautiful app.
             </p>
@@ -47,8 +46,12 @@ const Banner = () => {
             </a>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
-            <a href="#slide3" className="btn btn-circle">❮</a>
-            <a href="#slide2" className="btn btn-circle">❯</a>
+            <a href="#slide3" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide2" className="btn btn-circle">
+              ❯
+            </a>
           </div>
         </div>
 
@@ -61,7 +64,9 @@ const Banner = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10"></div>
           <div className="absolute left-8 top-1/3 text-left z-20 text-white space-y-3">
-            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">Organize Your Bookshelf</h2>
+            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">
+              Organize Your Bookshelf
+            </h2>
             <p className="text-sm md:text-base max-w-md">
               Categorize by genre or reading status with elegant visuals.
             </p>
@@ -73,8 +78,12 @@ const Banner = () => {
             </a>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
-            <a href="#slide1" className="btn btn-circle">❮</a>
-            <a href="#slide3" className="btn btn-circle">❯</a>
+            <a href="#slide1" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide3" className="btn btn-circle">
+              ❯
+            </a>
           </div>
         </div>
 
@@ -87,7 +96,9 @@ const Banner = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent z-10"></div>
           <div className="absolute left-8 top-1/3 text-left z-20 text-white space-y-3">
-            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">Join Book-Lovers Worldwide</h2>
+            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">
+              Join Book-Lovers Worldwide
+            </h2>
             <p className="text-sm md:text-base max-w-md">
               Discover, review and recommend the best reads.
             </p>
@@ -99,8 +110,12 @@ const Banner = () => {
             </a>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
-            <a href="#slide2" className="btn btn-circle">❮</a>
-            <a href="#slide1" className="btn btn-circle">❯</a>
+            <a href="#slide2" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle">
+              ❯
+            </a>
           </div>
         </div>
       </div>
