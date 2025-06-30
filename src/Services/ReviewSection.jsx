@@ -3,6 +3,7 @@ import { FaUserCircle, FaEdit, FaTrash } from "react-icons/fa";
 import { CgDanger } from "react-icons/cg";
 import axios from "axios";
 import { AuthContext } from "../Firebase/Context/AuthContext";
+import { toast } from "react-toastify";
 
 const ReviewSection = ({ bookId }) => {
   const [review, setReview] = useState("");
@@ -29,7 +30,7 @@ const ReviewSection = ({ bookId }) => {
   // Submit review
   const handleClick = () => {
     if (reviews.some((rev) => rev.user?.email === user?.email)) {
-      alert("You have already posted a review.");
+      toast("You have already posted a review.");
       return;
     }
 
