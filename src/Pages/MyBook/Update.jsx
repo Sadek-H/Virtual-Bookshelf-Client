@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 const Update = () => {
   //const data = useLoaderData();
   const { id } = useParams();
-  const { user,token } = use(AuthContext);
+  const { user, token } = use(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let form = e.target;
@@ -16,21 +17,22 @@ const Update = () => {
     let alldata = Object.fromEntries(formdata.entries());
 
     //update
-    axios.put(`http://localhost:3000/update/${id}`, alldata,{
-      headers: {
+    axios
+      .put(`http://localhost:3000/update/${id}`, alldata, {
+        headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },
-    }).then((res) => {
-    
-      if (res.data?.modifiedCount) {
-         Swal.fire({
+      })
+      .then((res) => {
+        if (res.data?.modifiedCount) {
+          Swal.fire({
             title: "Update Successful",
             icon: "success",
             confirmButtonText: "OK",
           });
-            form.reset();
-      }
-    });
+          form.reset();
+        }
+      });
   };
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-indigo-100 to-white py-20 px-4">
