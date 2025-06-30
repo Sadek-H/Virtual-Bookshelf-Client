@@ -14,6 +14,7 @@ import Update from "../Pages/MyBook/Update";
 import Profile from "../Pages/Profile/Profile";
 import NotFound from "../Pages/Profile/NotFound";
 import Privateroutes from "./Privateroutes";
+import SkeletonLoader from "../Pages/SkeletonLoader";
 
 
 
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
        path: "books/:id",
        Component: Bookdetails,
        loader: ()=> fetch("http://localhost:3000/books"),
+       hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
          
       },
       {
@@ -61,8 +63,8 @@ export const router = createBrowserRouter([
       {
        path: "mybook/update/:id",
       element:<Privateroutes><Update></Update></Privateroutes>,
-       loader:()=> fetch("http://localhost:3000/books")
-
+       loader:()=> fetch("http://localhost:3000/books"),
+        hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
 
       },
       {
