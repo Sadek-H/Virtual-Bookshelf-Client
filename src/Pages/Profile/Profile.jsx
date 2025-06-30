@@ -90,7 +90,10 @@ const Profile = () => {
           
           <div>
             <h4 className="text-lg font-semibold text-indigo-600 mb-2"> Categories :</h4>
-            <div className="flex flex-wrap gap-2 mb-6">
+           {
+            mybook.length !== 0 ? 
+            <>
+             <div className="flex flex-wrap gap-2 mb-6">
               {singleCat.map((cat, idx) => (
                 <span
                   key={idx}
@@ -126,6 +129,11 @@ const Profile = () => {
                 </BarChart>
               </ResponsiveContainer>
             </div>
+            </> :   
+           <div className="flex justify-center items-center bg-gray-100 rounded-2xl shadow-md h-24">
+             <p className="text-blue-800 font-bold">You don't have any Categories</p>
+           </div>
+           }
           </div>
         </div>
       </div>
