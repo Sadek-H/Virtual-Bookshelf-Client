@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "../Components/Shared/Navbar";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
+import SkeletonLoader from "../Pages/SkeletonLoader";
 const Homelayout = () => {
   return (
     <div>
@@ -18,7 +19,9 @@ const Homelayout = () => {
         theme="light"
       />
       <Navbar></Navbar>
-      <Outlet></Outlet>
+      <Suspense fallback={<SkeletonLoader />}>
+        <Outlet></Outlet>
+      </Suspense>
     </div>
   );
 };
