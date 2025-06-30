@@ -18,7 +18,7 @@ const Update = () => {
 
     //update
     axios
-      .put(`http://localhost:3000/update/${id}`, alldata, {
+      .put(`https://virtual-bookshelf-server-sooty.vercel.app/update/${id}`, alldata, {
         headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },

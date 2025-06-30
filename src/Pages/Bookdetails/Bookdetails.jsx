@@ -19,20 +19,23 @@ const Bookdetails = () => {
       return;
     }
     axios
-      .put(`http://localhost:3000/books/${id}/upvote`, book, {
+      .put(`https://virtual-bookshelf-server-sooty.vercel.app/books/${id}/upvote`, book, {
         headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },
       })
       .then((res) => {
-        console.log(res);
+       
+        if(res.data.modifiedCount){
 
-        if (book?.upvote) {
-          setBook((prev) => ({
-            ...prev,
-            upvote: (prev?.upvote || 0) + 1,
-          }));
+          if (book?.upvote) {
+            setBook((prev) => ({
+              ...prev,
+              upvote: (prev?.upvote || 0) + 1,
+            }));
+          }
         }
+
       });
   };
   return (

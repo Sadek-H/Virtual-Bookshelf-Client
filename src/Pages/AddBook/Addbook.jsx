@@ -16,7 +16,7 @@ const AddBook = () => {
     allbook.user_name = user?.displayName;
     allbook.upvote = 0;
     //send data to db
-    axios.post("http://localhost:3000/add-book", allbook,{
+    axios.post("https://virtual-bookshelf-server-sooty.vercel.app/add-book", allbook,{
        headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },

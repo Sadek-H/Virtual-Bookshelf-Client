@@ -19,7 +19,7 @@ const Profile = () => {
       navigate('/login')
   }
   useEffect(() => {
-    fetch("http://localhost:3000/books")
+    fetch("https://virtual-bookshelf-server-sooty.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         const filterData = data.filter((book) => book.user_email === user.email);

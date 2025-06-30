@@ -15,7 +15,7 @@ const Mybooks = () => {
 
   useEffect(() => {
     setLoader(true);
-    fetch("http://localhost:3000/books", {
+    fetch("https://virtual-bookshelf-server-sooty.vercel.app/books", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -45,7 +45,7 @@ const Mybooks = () => {
 
     if (result.isConfirmed) {
       try {
-        const res = await axios.delete(`http://localhost:3000/books/${id}`, {
+        const res = await axios.delete(`https://virtual-bookshelf-server-sooty.vercel.app/books/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

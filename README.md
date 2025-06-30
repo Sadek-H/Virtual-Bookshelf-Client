@@ -2,8 +2,7 @@
 
 A modern web application to manage your personal bookshelf, built with **React** and **Vite**.
 
-**Live Demo:** [https://virtual-bookshelf-demo.vercel.app](https://virtual-bookshelf-demo.vercel.app)  
-*(Replace with your actual deployed URL if different)*
+**Live Demo:** [https://virtual-bookshelf-server-sooty.vercel.app/]
 
 ---
 
@@ -60,7 +59,7 @@ Virtual Bookshelf helps you organize, track, and discover books. Add your own bo
 
 4. **Open in your browser:**
    ```
-   http://localhost:5173
+  https://fir-job-4414a.web.app
    ```
 
 ---

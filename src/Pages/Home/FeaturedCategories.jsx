@@ -19,13 +19,12 @@ const FeaturedCategories = () => {
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/books")
+    fetch("https://virtual-bookshelf-server-sooty.vercel.app/books")
       .then((res) => res.json())
       .then((data) => {
         setAllBooks(data);
         const catfilter = data.map((book) => book.book_category);
         const singlecat = [...new Set(catfilter)];
-        console.log(singlecat);
         setCategories(singlecat);
       });
   }, []);

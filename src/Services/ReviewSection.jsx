@@ -14,7 +14,7 @@ const ReviewSection = ({ bookId }) => {
 
   // Load reviews for this book
   useEffect(() => {
-    fetch("http://localhost:3000/reviews",{
+    fetch("https://virtual-bookshelf-server-sooty.vercel.app/reviews",{
       headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },
@@ -43,7 +43,7 @@ const ReviewSection = ({ bookId }) => {
       },
     };
 
-    axios.post("http://localhost:3000/reviews", newReview,{
+    axios.post("https://virtual-bookshelf-server-sooty.vercel.app/reviews", newReview,{
       headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },
@@ -56,7 +56,7 @@ const ReviewSection = ({ bookId }) => {
   // Update review
   const handleUpdate = () => {
     axios
-      .put(`http://localhost:3000/review/${editId}`, { text: editText },{
+      .put(`https://virtual-bookshelf-server-sooty.vercel.app/review/${editId}`, { text: editText },{
         headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },
@@ -72,7 +72,7 @@ const ReviewSection = ({ bookId }) => {
       });
   };
   const handledelete = (id) => {
-    axios.delete(`http://localhost:3000/review/${id}`,{
+    axios.delete(`https://virtual-bookshelf-server-sooty.vercel.app/review/${id}`,{
       headers: {
           Authorization: `Bearer ${token}`, //  Send token in header
         },

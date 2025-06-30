@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
       {
        path: "books/:id",
        Component: Bookdetails,
-       loader: ()=> fetch("http://localhost:3000/books"),
+       loader: ()=> fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
        hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
          
       },
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       {
        path: "mybook/update/:id",
       element:<Privateroutes><Update></Update></Privateroutes>,
-       loader:()=> fetch("http://localhost:3000/books"),
+       loader:()=> fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
         hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
 
       },
