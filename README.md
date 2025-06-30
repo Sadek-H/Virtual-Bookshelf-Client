@@ -65,7 +65,7 @@ Virtual Bookshelf helps you organize, track, and discover books. Whether you're 
    ```
 
 4. **Open in your browser**
-   Visit: `http://localhost:5173` (or the port shown in terminal)
+   Visit: `https://fir-job-4414a.web.app` 
 
 ---
 
