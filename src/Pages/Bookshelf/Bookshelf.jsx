@@ -3,19 +3,23 @@ import { Link } from "react-router";
 import { AiFillLike } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import SkeletonLoader from "../SkeletonLoader";
 
 const Bookshelf = () => {
   const [books, setBooks] = useState([]);
   const [filterstatus, setFilterStatus] = useState("All");
   const [text, setText] = useState("");
   const [filteredBooks, setFilteredBooks] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
+    setLoading(true);
     fetch("http://localhost:3000/books")
       .then((res) => res.json())
       .then((data) => {
         setBooks(data);
         setFilteredBooks(data);
+        setLoading(false); // Set loading false after data is fetched
       });
   }, []);
 
@@ -32,7 +36,6 @@ const Bookshelf = () => {
       );
     }
     setFilteredBooks(filteredData);
-    
   }, [books, text, filterstatus]);
 
   const handleChange = (e) => {
@@ -42,6 +45,11 @@ const Bookshelf = () => {
   const handleStatusChange = (e) => {
     setFilterStatus(e.target.value);
   };
+
+  // Show skeleton loader while loading
+  if (loading) {
+    return <SkeletonLoader />;
+  }
 
   return (
     <div className="px-4 md:px-12 py-12">
