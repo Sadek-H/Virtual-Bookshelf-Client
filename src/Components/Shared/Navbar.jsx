@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { FaBarsStaggered } from "react-icons/fa6";
 
 const Navbar = () => {
-  const { user, signOutuser } = use(AuthContext); 
+  const { user, signOutuser } = use(AuthContext);
   const [openbar, setopenBar] = useState(false);
 
   const handlelogout = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="container mx-auto bg-white px-4 py-4">
+    <div className="container mx-auto  bg-white px-4 py-4">
       <div className="flex items-center justify-between w-full ">
         <FaBarsStaggered
           onClick={handleClick}
@@ -28,7 +28,9 @@ const Navbar = () => {
         />
         <div className="flex items-center space-x-2">
           <FaBookOpen className="text-xl md:text-2xl text-blue-600" />
-          <span className="text-2xl md:text-3xl font-bold text-gray-800">BookShelf</span>
+          <span className="text-2xl md:text-3xl font-bold text-gray-800">
+            BookShelf
+          </span>
         </div>
 
         {/* Desktop Menu */}
@@ -69,51 +71,78 @@ const Navbar = () => {
         </div>
       </div>
 
-     {openbar && (
-  <div className="w-full lg:hidden mt-4 rounded-lg bg-blue-100 px-6 py-6 animate-fade-down ">
-    <div className="flex flex-col justify-start gap-4 text-lg font-semibold text-gray-800 w-max">
-      <NavLink to="/" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-        Home
-      </NavLink>
-      <NavLink to="/bookshelf" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-        Bookshelf
-      </NavLink>
-      <NavLink to="/add-book" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-        Add Book
-      </NavLink>
-      <NavLink to="/my-book" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-        My Book
-      </NavLink>
+      {openbar && (
+        <div className="w-full lg:hidden mt-4 rounded-lg bg-blue-100 px-6 py-6 animate-fade-down ">
+          <div className="flex flex-col justify-start gap-4 text-lg font-semibold text-gray-800 w-max">
+            <NavLink
+              to="/"
+              onClick={() => setopenBar(false)}
+              className="hover:text-blue-600 transition"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/bookshelf"
+              onClick={() => setopenBar(false)}
+              className="hover:text-blue-600 transition"
+            >
+              Bookshelf
+            </NavLink>
+            <NavLink
+              to="/add-book"
+              onClick={() => setopenBar(false)}
+              className="hover:text-blue-600 transition"
+            >
+              Add Book
+            </NavLink>
+            <NavLink
+              to="/my-book"
+              onClick={() => setopenBar(false)}
+              className="hover:text-blue-600 transition"
+            >
+              My Book
+            </NavLink>
 
-      {user ? (
-        <>
-          <NavLink to="/profile" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-            Profile
-          </NavLink>
-          <button
-            onClick={() => {
-              handlelogout();
-              setopenBar(false);
-            }}
-            className="hover:text-blue-600 transition text-left"
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <NavLink to="/login" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-            Login
-          </NavLink>
-          <NavLink to="/register" onClick={() => setopenBar(false)} className="hover:text-blue-600 transition">
-            Register
-          </NavLink>
-        </>
+            {user ? (
+              <>
+                <NavLink
+                  to="/profile"
+                  onClick={() => setopenBar(false)}
+                  className="hover:text-blue-600 transition"
+                >
+                  Profile
+                </NavLink>
+                <button
+                  onClick={() => {
+                    handlelogout();
+                    setopenBar(false);
+                  }}
+                  className="hover:text-blue-600 transition text-left"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  onClick={() => setopenBar(false)}
+                  className="hover:text-blue-600 transition"
+                >
+                  Login
+                </NavLink>
+                <NavLink
+                  to="/register"
+                  onClick={() => setopenBar(false)}
+                  className="hover:text-blue-600 transition"
+                >
+                  Register
+                </NavLink>
+              </>
+            )}
+          </div>
+        </div>
       )}
-    </div>
-  </div>
-)}
-
     </div>
   );
 };
