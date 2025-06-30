@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ImBooks } from "react-icons/im";
+import { Link } from "react-router";
 const Banner = () => {
   return (
     <div className="bg-white text-center pt-10 pb-10">
@@ -38,12 +39,12 @@ const Banner = () => {
             <p className="text-sm md:text-base max-w-md">
               Track, explore and review books all in one beautiful app.
             </p>
-            <a
-              href="/bookshelf"
+            <Link
+              to="/bookshelf"
               className="inline-block bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded-full text-sm font-semibold"
             >
               Start Exploring
-            </a>
+            </Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
             <a href="#slide3" className="btn btn-circle">
@@ -70,12 +71,12 @@ const Banner = () => {
             <p className="text-sm md:text-base max-w-md">
               Categorize by genre or reading status with elegant visuals.
             </p>
-            <a
-              href="/add-book"
+            <Link
+              to="/add-book"
               className="inline-block bg-pink-500 hover:bg-pink-600 transition px-6 py-2 rounded-full text-sm font-semibold"
             >
               Add a Book
-            </a>
+            </Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
             <a href="#slide1" className="btn btn-circle">
@@ -102,12 +103,12 @@ const Banner = () => {
             <p className="text-sm md:text-base max-w-md">
               Discover, review and recommend the best reads.
             </p>
-            <a
-              href="/profile"
+            <Link
+              to="/bookshelf"
               className="inline-block bg-indigo-600 hover:bg-indigo-700 transition px-6 py-2 rounded-full text-sm font-semibold"
             >
               View Your Shelf
-            </a>
+            </Link>
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 z-30">
             <a href="#slide2" className="btn btn-circle">
