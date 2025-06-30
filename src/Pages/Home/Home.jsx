@@ -6,7 +6,7 @@ import FeaturedCategories from './FeaturedCategories';
 
 import FAQSection from './FAQSection';
 import Tips from './Tips';
-import Footer from './Footer';
+
 
 const Home = () => {
     return (
@@ -19,7 +19,7 @@ const Home = () => {
                     <FAQSection></FAQSection>
                     <Tips></Tips>
             </div>
-            <Footer></Footer>
+
         </div>
     );
 };

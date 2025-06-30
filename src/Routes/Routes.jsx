@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter,
-
-} from "react-router";
+import { createBrowserRouter } from "react-router";
 import Homelayout from "../Layout/Homelayout";
 import Home from "../Pages/Home/Home";
 import Addbook from "../Pages/AddBook/Addbook";
@@ -16,62 +13,74 @@ import NotFound from "../Pages/Profile/NotFound";
 import Privateroutes from "./Privateroutes";
 import SkeletonLoader from "../Pages/SkeletonLoader";
 
-
-
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Homelayout,
-    errorElement: <NotFound/>,
-    children:[
+    errorElement: <NotFound />,
+    children: [
       {
         index: true,
         Component: Home,
       },
       {
-       path: "add-book",
-      element: <Privateroutes><Addbook></Addbook></Privateroutes>
-       
+        path: "add-book",
+        element: (
+          <Privateroutes>
+            <Addbook></Addbook>
+          </Privateroutes>
+        ),
       },
       {
-       path: "books/:id",
-       Component: Bookdetails,
-       loader: ()=> fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
-       hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
-         
+        path: "books/:id",
+        Component: Bookdetails,
+        loader: () =>
+          fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
+        hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>,
       },
       {
-       path: "login",
-       Component: Login,
-
+        path: "books/:*",
+        Component: <NotFound></NotFound>,
       },
       {
-       path: "register",
-       Component: Register,
-
+        path: "login",
+        Component: Login,
       },
       {
-       path: "bookshelf",
-       Component: Bookshelf,
-
+        path: "register",
+        Component: Register,
       },
       {
-       path: "my-book",
-      element:<Privateroutes><Mybooks></Mybooks></Privateroutes>
-
+        path: "bookshelf",
+        Component: Bookshelf,
       },
       {
-       path: "mybook/update/:id",
-      element:<Privateroutes><Update></Update></Privateroutes>,
-       loader:()=> fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
-        hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>
-
+        path: "my-book",
+        element: (
+          <Privateroutes>
+            <Mybooks></Mybooks>
+          </Privateroutes>
+        ),
       },
       {
-       path: "profile",
-     element: <Privateroutes><Profile></Profile></Privateroutes>
-
+        path: "mybook/update/:id",
+        element: (
+          <Privateroutes>
+            <Update></Update>
+          </Privateroutes>
+        ),
+        loader: () =>
+          fetch("https://virtual-bookshelf-server-sooty.vercel.app/books"),
+        hydrateFallbackElement: <SkeletonLoader></SkeletonLoader>,
       },
-    ]
+      {
+        path: "profile",
+        element: (
+          <Privateroutes>
+            <Profile></Profile>
+          </Privateroutes>
+        ),
+      },
+    ],
   },
 ]);

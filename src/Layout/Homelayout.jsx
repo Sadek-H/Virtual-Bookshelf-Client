@@ -3,6 +3,7 @@ import Navbar from "../Components/Shared/Navbar";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import SkeletonLoader from "../Pages/SkeletonLoader";
+import Footer from "../Pages/Home/Footer";
 const Homelayout = () => {
   return (
     <div>
@@ -22,6 +23,7 @@ const Homelayout = () => {
       <Suspense fallback={<SkeletonLoader />}>
         <Outlet></Outlet>
       </Suspense>
+     <Footer></Footer>
     </div>
   );
 };
