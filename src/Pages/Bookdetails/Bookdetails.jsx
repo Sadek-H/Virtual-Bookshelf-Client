@@ -9,25 +9,29 @@ const Bookdetails = () => {
   let { id } = useParams();
   let data = useLoaderData();
   let [book, setBook] = useState(null);
-  
+  let [status, setStatus] = useState("");
+
   useEffect(() => {
     const filteredbook = data.find((book) => book._id == id);
     setBook(filteredbook);
   }, [id, data]);
+
   let handleupvote = () => {
     if (user?.email == book.user_email) {
       return;
     }
     axios
-      .put(`https://virtual-bookshelf-server-sooty.vercel.app/books/${id}/upvote`, book, {
-        headers: {
-          Authorization: `Bearer ${token}`, //  Send token in header
-        },
-      })
+      .put(
+        `https://virtual-bookshelf-server-sooty.vercel.app/books/${id}/upvote`,
+        book,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, //  Send token in header
+          },
+        }
+      )
       .then((res) => {
-       
-        if(res.data.modifiedCount){
-
+        if (res.data.modifiedCount) {
           if (book?.upvote) {
             setBook((prev) => ({
               ...prev,
@@ -35,9 +39,36 @@ const Bookdetails = () => {
             }));
           }
         }
-
       });
   };
+
+  const handleStatus = () => {
+    if (user?.email !== book?.user_email) {
+      return;
+    }
+
+    axios
+      .put(
+        `https://virtual-bookshelf-server-sooty.vercel.app/books/${id}/status`,
+        { reading_status: status },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          setBook((prev) => ({
+            ...prev,
+            reading_status: status,
+          }));
+          setStatus("");
+        }
+        document.getElementById("my_modal_5").close();
+      });
+  };
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-10 bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl rounded-xl my-5">
       <h2 className="text-3xl font-bold  mb-8">Book Details</h2>
@@ -107,11 +138,57 @@ const Bookdetails = () => {
                 Upvote
               </button>
             ) : null}
-            {book?.reading_status !== "Read" && (
-              <button className="text-blue-600 underline font-medium hover:text-blue-800 transition text-sm">
-                Update Reading Status
-              </button>
+
+            {user?.email === book?.user_email ? (
+              <>
+                <button
+                  className="text-blue-500 underline hover:text-blue-700"
+                  onClick={() =>
+                    document.getElementById("my_modal_5").showModal()
+                  }
+                >
+                  Update Reading Status
+                </button>
+              </>
+            ) : (
+              <p className="text-sm italic text-red-500 mt-2 font-medium">
+                Only the book owner can update the reading status.
+              </p>
             )}
+
+            <dialog
+              id="my_modal_5"
+              className="modal modal-bottom sm:modal-middle"
+            >
+              <div className="modal-box">
+                <select
+                  onChange={(e) => setStatus(e.target.value)}
+                  className="select select-bordered w-full mb-4"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Choose reading status
+                  </option>
+                  <option value="Want-to-Read">Want to Read</option>
+                  <option value="Reading">Reading</option>
+                  <option value="Read">Read</option>
+                </select>
+                <div className="modal-action">
+                  <button onClick={handleStatus} className="btn btn-success">
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() =>
+                      document.getElementById("my_modal_5").close()
+                    }
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </dialog>
           </div>
         </div>
       </div>
