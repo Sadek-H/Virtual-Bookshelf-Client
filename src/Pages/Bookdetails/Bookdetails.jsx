@@ -137,7 +137,7 @@ const Bookdetails = () => {
               >
                 Upvote
               </button>
-            ) : null}
+            ) : <p className="text-green-600 font-medium">You need to Login first to Upvote</p>}
 
             {user?.email === book?.user_email ? (
               <>

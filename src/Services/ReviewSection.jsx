@@ -68,7 +68,7 @@ const ReviewSection = ({ bookId }) => {
             r._id === editId ? { ...r, text: editText } : r
           );
           setReviews(updated);
-          document.getElementById("my_modal_5").close();
+          document.getElementById("my_modal_4").close();
         }
       });
   };
@@ -133,7 +133,7 @@ const ReviewSection = ({ bookId }) => {
                       onClick={() => {
                         setEditId(review._id);
                         setEditText(review.text);
-                        document.getElementById("my_modal_5").showModal();
+                        document.getElementById("my_modal_4").showModal();
                       }}
                       className="hover:underline flex items-center gap-1"
                     >
@@ -161,7 +161,7 @@ const ReviewSection = ({ bookId }) => {
       )}
 
       {/* Edit Modal */}
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+      <dialog id="my_modal_4" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Update Your Review</h3>
           <textarea
@@ -182,7 +182,7 @@ const ReviewSection = ({ bookId }) => {
               </button>
               <button
                 type="button"
-                onClick={() => document.getElementById("my_modal_5").close()}
+                onClick={() => document.getElementById("my_modal_4").close()}
                 className="btn btn-secondary"
               >
                 Close
