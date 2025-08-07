@@ -34,7 +34,6 @@ Virtual Bookshelf helps you organize, track, and discover books. Whether you're 
 |------|-------------|
 | [`react`](https://react.dev/) | JavaScript UI Library |
 | [`vite`](https://vitejs.dev/) | Fast build tool |
-| [`react-router-dom`](https://reactrouter.com/) | Routing system |
 | [`tailwindcss`](https://tailwindcss.com/) | Utility-first CSS framework |
 | [`daisyui`](https://daisyui.com/) | Tailwind component library |
 | [`framer-motion`](https://www.framer.com/motion/) | Animations and transitions |
