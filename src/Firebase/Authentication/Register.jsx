@@ -1,11 +1,11 @@
-import React, { use, useState } from 'react';
-import { Link, useNavigate } from 'react-router'; 
-import { AuthContext } from '../Context/AuthContext';
-import { toast } from 'react-toastify';
+import React, { use, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
-  const { createUser, googleSignin, updateUser } = use(AuthContext); 
-  const [error, setError] = useState('');
+  const { createUser, googleSignin, updateUser } = use(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handlesubmit = (e) => {
@@ -18,7 +18,7 @@ const Register = () => {
     const passtest = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/;
     if (!passtest.test(password)) {
       setError(
-        'Password must be at least 6 characters long, contain at least one uppercase letter, one lowercase letter, and one number.'
+        "Password must be at least 6 characters long, contain at least one uppercase letter, one lowercase letter, and one number."
       );
       return;
     }
@@ -26,24 +26,24 @@ const Register = () => {
       .then((res) => {
         if (res.user) {
           updateUser({ displayName: name, photoURL: photo }).then(() => {
-            toast.success('Registration successful!');
-            navigate('/');
+            toast.success("Registration successful!");
+            navigate("/");
           });
         }
       })
       .catch((err) => {
-        setError(err.message || 'Registration failed');
+        setError(err.message || "Registration failed");
       });
   };
 
   const handlesigningoogle = () => {
     googleSignin()
       .then(() => {
-        toast.success('Sign-in successful!');
-        navigate('/');
+        toast.success("Sign-in successful!");
+        navigate("/");
       })
       .catch((err) => {
-        setError(err.message || 'Google sign-in failed');
+        setError(err.message || "Google sign-in failed");
       });
   };
 
@@ -95,14 +95,12 @@ const Register = () => {
               required
             />
             {/* error message */}
-            {error && (
-              <p className="text-red-500 text-sm mt-2">{error}</p>
-            )}
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
             <button type="submit" className="btn btn-neutral mt-4 poppins">
               Register
             </button>
             <p className="font-semibold text-center pt-5">
-              Already Have An Account?{' '}
+              Already Have An Account?{" "}
               <Link className="text-secondary" to="/login">
                 Login
               </Link>
