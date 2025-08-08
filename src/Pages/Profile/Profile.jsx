@@ -61,8 +61,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen py-12 px-6 bg-gradient-to-b from-white to-blue-50">
-      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-8">
+    <div className="min-h-screen py-20 px-6 bg-gradient-to-b from-white to-blue-50">
+      <div className="container mx-auto bg-white shadow-xl rounded-2xl p-8">
       
         <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
           <img

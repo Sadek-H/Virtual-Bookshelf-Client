@@ -52,7 +52,7 @@ const Bookshelf = () => {
   }
 
   return (
-    <div className="px-4 md:px-12 py-12">
+    <div className="container mx-auto px-4 md:px-12 py-30">
       {/* Search & Filter */}
       <div className="flex justify-center items-center gap-6 flex-wrap md:flex-nowrap mb-10">
         {/* Search */}

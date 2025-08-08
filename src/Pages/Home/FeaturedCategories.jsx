@@ -35,7 +35,7 @@ const FeaturedCategories = () => {
   };
 
   return (
-    <div className="py-12 px-4 max-w-7xl mx-auto">
+    <div className="container py-12 px-4  mx-auto">
       <h2 className="text-2xl md:text-3xl font-bold text-center mb-4">
       Featured <span className="text-blue-500">Categories</span>
     </h2>

@@ -36,7 +36,7 @@ const AddBook = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-indigo-100 to-white py-20 px-4">
       <motion.div
-        className="max-w-3xl mx-auto rounded-2xl p-8 bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-indigo-200"
+        className="container mx-auto rounded-2xl p-8 bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-indigo-200"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}

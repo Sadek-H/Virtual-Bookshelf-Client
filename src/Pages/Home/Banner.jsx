@@ -19,7 +19,7 @@ const navigateSlide = (e, id) => {
 
 const Banner = () => {
   return (
-    <div className="bg-white text-center pt-10 pb-10 max-w-6xl mx-auto">
+    <div className="bg-white text-center pt-25 pb-10 container mx-auto">
       {/* Header */}
       <motion.div
         initial="hidden"
@@ -42,10 +42,10 @@ const Banner = () => {
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1470&q=80"
-            className="w-full object-cover h-[420px]"
+            className="w-full object-cover h-[420px] opacity-70"
             alt="Books"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/10 z-10"></div>
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
 
           <motion.div
             key="#slide1"
@@ -54,7 +54,7 @@ const Banner = () => {
             variants={textVariants}
             className="absolute left-8 top-1/3 text-left z-20 text-white space-y-3 max-w-md"
           >
-            <h2 className="text-3xl md:text-5xl font-bold drop-shadow">
+            <h2 className="text-3xl md:text-5xl font-bold  drop-shadow-lg">
               Fuel Your Reading Habit
             </h2>
             <p className="text-sm md:text-base max-w-md">
@@ -91,10 +91,10 @@ const Banner = () => {
         <div id="slide2" className="carousel-item relative w-full">
           <img
             src="https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1470&q=80"
-            className="w-full object-cover h-[420px]"
+            className="w-full object-cover h-[420px] opacity-70"
             alt="Reading"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
 
           <motion.div
             key="#slide2"
@@ -140,10 +140,10 @@ const Banner = () => {
         <div id="slide3" className="carousel-item relative w-full">
           <img
             src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1470&q=80"
-            className="w-full object-cover h-[420px]"
+            className="w-full object-cover h-[420px] opacity-60"
             alt="Library"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-black/60 z-10"></div>
 
           <motion.div
             key="#slide3"

@@ -20,7 +20,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="container mx-auto rounded-lg shadow px-4 py-4">
+   <div className="border-b-fuchsia-100 shadow fixed top-0 left-0 w-full z-50 bg-white">
+     <div className="container mx-auto rounded-lg px-4 py-4">
       <div className="flex items-center justify-between w-full">
         {/* Left: Logo */}
         <div className="flex items-center space-x-2">
@@ -80,7 +81,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {openbar && (
-        <div className="w-full lg:hidden mt-4 rounded-lg bg-blue-100 px-6 py-6 animate-fade-down ">
+        <div className="w-full lg:hidden mt-4 rounded-lg  px-6 py-6 animate-fade-down border-b-fuchsia-100 shadow">
           <div className="flex flex-col justify-start gap-4 text-lg font-semibold text-gray-800 w-max">
             <NavLink
               to="/"
@@ -152,6 +153,7 @@ const Navbar = () => {
         </div>
       )}
     </div>
+   </div>
   );
 };
 

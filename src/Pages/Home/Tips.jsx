@@ -45,7 +45,7 @@ const itemVariants = {
 const Tips = () => {
   return (
     <section className="bg-gray-50 py-16">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-center gap-1 mb-8">
           <MdTipsAndUpdates className="text-2xl text-yellow-500" />
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900">

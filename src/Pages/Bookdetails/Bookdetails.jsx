@@ -70,8 +70,8 @@ const Bookdetails = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-10 bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl rounded-xl my-5">
-      <h2 className="text-3xl font-bold  mb-8">Book Details</h2>
+    <div className="container mx-auto px-6 py-25 bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl rounded-xl my-8">
+      <h2 className="text-3xl font-bold  border-b-gray-400 mb-8">Book Details</h2>
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Left: Book Cover */}
         <div className="relative">
