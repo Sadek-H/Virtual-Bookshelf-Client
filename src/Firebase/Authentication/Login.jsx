@@ -33,7 +33,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="container mx-auto flex justify-center min-h-screen items-center my-10">
+    <div className=" flex justify-center min-h-screen items-center my-10">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
         <h2 className="font-semibold text-2xl text-center poppins">
           Login your account

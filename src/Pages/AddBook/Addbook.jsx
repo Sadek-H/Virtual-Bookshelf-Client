@@ -4,37 +4,43 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { use } from "react";
 import { AuthContext } from "../../Firebase/Context/AuthContext";
+import { useOutletContext } from "react-router";
 const AddBook = () => {
-  const {user,token} = use(AuthContext);
+  const { user, token } = use(AuthContext);
+  const { theme } = useOutletContext();
   let handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formdata = new FormData(form);
     const allbook = Object.fromEntries(formdata.entries());
-    
-     allbook.user_email = user?.email;
+
+    allbook.user_email = user?.email;
     allbook.user_name = user?.displayName;
     allbook.upvote = 0;
     //send data to db
-    axios.post("https://virtual-bookshelf-server-sooty.vercel.app/add-book", allbook,{
-       headers: {
-          Authorization: `Bearer ${token}`, //  Send token in header
-        },
-    })
-    .then((res) => {
-      
-      if (res.data.insertedId) {
-        Swal.fire({
-          title: "Success",
-          icon: "success",
-          text: "Items Added",
-          draggable: true,
-        });
-      }
-    });
+    axios
+      .post(
+        "https://virtual-bookshelf-server-sooty.vercel.app/add-book",
+        allbook,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, //  Send token in header
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            icon: "success",
+            text: "Items Added",
+            draggable: true,
+          });
+        }
+      });
   };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-indigo-100 to-white py-20 px-4">
+    <div className="min-h-screen  py-20 px-4">
       <motion.div
         className="container mx-auto rounded-2xl p-8 bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-indigo-200"
         initial={{ opacity: 0, y: 30 }}
@@ -51,13 +57,17 @@ const AddBook = () => {
         <p className="text-center text-gray-600 mb-8">
           Fill out the form to share a great read with the world!
         </p>
-          
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <input
             type="text"
             name="book_title"
             placeholder="📖 Book Title"
-            className="input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           />
 
@@ -65,7 +75,11 @@ const AddBook = () => {
             type="text"
             name="cover_photo"
             placeholder="🖼️ Cover Photo URL"
-            className="input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           />
 
@@ -73,7 +87,11 @@ const AddBook = () => {
             type="number"
             name="total_page"
             placeholder="📄 Total Pages"
-            className="input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           />
 
@@ -81,7 +99,11 @@ const AddBook = () => {
             type="text"
             name="book_author"
             placeholder="✍️ Author Name"
-            className="input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           />
 
@@ -101,7 +123,11 @@ const AddBook = () => {
 
           <select
             name="book_category"
-            className="select select-bordered w-full rounded-xl focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           >
             <option value="">📚 Choose Category</option>
@@ -112,7 +138,11 @@ const AddBook = () => {
 
           <select
             name="reading_status"
-            className="select select-bordered w-full rounded-xl focus:ring-2 focus:ring-purple-400"
+            className={`input input-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           >
             <option value="">📘 Reading Status</option>
@@ -124,7 +154,11 @@ const AddBook = () => {
           <textarea
             name="book_overview"
             placeholder="📝 Write a short overview..."
-            className="textarea textarea-bordered w-full rounded-xl focus:ring-2 focus:ring-purple-400"
+            className={`textarea textarea-bordered w-full rounded-xl shadow-sm focus:ring-2 focus:ring-purple-400 ${
+              theme
+                ? "bg-gray-100 text-gray-600"
+                : "bg-gray-100 text-gray-600 cursor-not-allowed"
+            }`}
             required
           ></textarea>
 

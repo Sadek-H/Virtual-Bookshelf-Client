@@ -19,7 +19,7 @@ const navigateSlide = (e, id) => {
 
 const Banner = () => {
   return (
-    <div className="bg-white text-center pt-25 pb-10 container mx-auto">
+    <div className=" text-center pt-25 pb-10 container mx-auto">
       {/* Header */}
       <motion.div
         initial="hidden"
@@ -29,9 +29,9 @@ const Banner = () => {
       >
         <div className="flex justify-center items-center gap-2">
           <ImBooks className="text-5xl" />
-          <h1 className="text-4xl font-extrabold text-gray-900">Book App</h1>
+          <h1 className="text-4xl font-extrabold">Book App</h1>
         </div>
-        <p className="text-gray-500 text-base">
+        <p className="text-gray-400 text-base">
           Explore book app designs for inspiration
         </p>
       </motion.div>

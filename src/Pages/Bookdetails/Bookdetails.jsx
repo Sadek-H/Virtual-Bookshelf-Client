@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData, useOutletContext, useParams } from "react-router";
 import ReviewSection from "../../Services/ReviewSection";
 import { AuthContext } from "../../Firebase/Context/AuthContext";
 import axios from "axios";
@@ -10,6 +10,7 @@ const Bookdetails = () => {
   let data = useLoaderData();
   let [book, setBook] = useState(null);
   let [status, setStatus] = useState("");
+  let { theme } = useOutletContext(); // ✅ from Homelayout Outlet context
 
   useEffect(() => {
     const filteredbook = data.find((book) => book._id == id);
@@ -26,7 +27,7 @@ const Bookdetails = () => {
         book,
         {
           headers: {
-            Authorization: `Bearer ${token}`, //  Send token in header
+            Authorization: `Bearer ${token}`,
           },
         }
       )
@@ -69,9 +70,16 @@ const Bookdetails = () => {
       });
   };
 
+  // ✅ Theme-based classes
+  const textColor = theme === "dark" ? "text-white" : "text-gray-800";
+  const bgColor = theme === "dark" ? "bg-gray-900" : "bg-white";
+
   return (
-    <div className="container mx-auto px-6 py-25 bg-gradient-to-br from-white via-gray-50 to-white shadow-2xl rounded-xl my-8">
-      <h2 className="text-3xl font-bold  border-b-gray-400 mb-8">Book Details</h2>
+    <div className={`container mx-auto px-6 py-25 shadow-2xl rounded-xl my-8 ${bgColor}`}>
+      <h2 className={`text-3xl font-bold border-b-gray-400 mb-8 ${textColor}`}>
+        Book Details
+      </h2>
+
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Left: Book Cover */}
         <div className="relative">
@@ -86,19 +94,19 @@ const Bookdetails = () => {
         </div>
 
         {/* Right: Book Info */}
-        <div className="space-y-4">
-          <h1 className="text-2xl font-bold text-gray-800 leading-snug">
+        <div className={`space-y-4 ${textColor}`}>
+          <h1 className="text-2xl font-bold leading-snug">
             {book?.book_title}
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg">
             by <span className="font-semibold">{book?.book_author}</span>
           </p>
 
-          <p className="text-gray-700 text-[15px] leading-relaxed italic border-l-4 pl-4 border-blue-500">
+          <p className="text-[15px] leading-relaxed italic border-l-4 pl-4 border-blue-500">
             {book?.book_overview}
           </p>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-700 mt-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm mt-4">
             <p>
               <strong>Total Pages:</strong> {book?.total_page}
             </p>
@@ -137,7 +145,11 @@ const Bookdetails = () => {
               >
                 Upvote
               </button>
-            ) : <p className="text-green-600 font-medium">You need to Login first to Upvote</p>}
+            ) : (
+              <p className="text-green-600 font-medium">
+                You need to Login first to Upvote
+              </p>
+            )}
 
             {user?.email === book?.user_email ? (
               <>
@@ -160,7 +172,7 @@ const Bookdetails = () => {
               id="my_modal_5"
               className="modal modal-bottom sm:modal-middle"
             >
-              <div className="modal-box">
+              <div className={`modal-box ${bgColor} ${textColor}`}>
                 <select
                   onChange={(e) => setStatus(e.target.value)}
                   className="select select-bordered w-full mb-4"
@@ -192,9 +204,12 @@ const Bookdetails = () => {
           </div>
         </div>
       </div>
+
       {/* Review Section Placeholder */}
       <div className="mt-12 border-t pt-8">
-        <h2 className="text-xl font-semibold mb-4">📝 User Reviews</h2>
+        <h2 className={`text-xl font-semibold mb-4 ${textColor}`}>
+          📝 User Reviews
+        </h2>
         <p className="text-sm text-gray-500 italic mb-2">
           Log in to write a review. Displaying latest reviews here...
         </p>

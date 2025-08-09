@@ -56,13 +56,13 @@ const Bookshelf = () => {
       {/* Search & Filter */}
       <div className="flex justify-center items-center gap-6 flex-wrap md:flex-nowrap mb-10">
         {/* Search */}
-        <div className="flex items-center w-full md:w-1/2 bg-gray-100 rounded-full px-4 py-2 shadow-sm">
+        <div className="flex items-center w-full md:w-1/2  rounded-full px-4 py-2 shadow-sm">
           <input
             type="text"
             value={text}
             onChange={handleChange}
             placeholder="Search by title or author..."
-            className="bg-transparent w-full px-2 py-1 outline-none"
+            className=" w-full px-2 py-1 "
           />
           <FaSearch className="text-pink-500" />
         </div>
@@ -72,14 +72,14 @@ const Bookshelf = () => {
           <select
             onChange={handleStatusChange}
             value={filterstatus}
-            className="w-full px-6 py-3 rounded-full bg-gray-100 focus:outline-none focus:ring-2 appearance-none shadow-sm"
+            className="w-full px-6 py-3 rounded-full focus:outline-none focus:ring-2 shadow-sm"
           >
-            <option value="All">All Statuses</option>
-            <option value="Read">Read</option>
-            <option value="Reading">Reading</option>
-            <option value="Want-to-Read">Want-to-Read</option>
+            <option className="text-gray-600" value="All">All Statuses</option>
+            <option className="text-gray-600" value="Read">Read</option>
+            <option className="text-gray-600" value="Reading">Reading</option>
+            <option className="text-gray-600" value="Want-to-Read">Want-to-Read</option>
           </select>
-          <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+          {/* <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" /> */}
         </div>
       </div>
 
@@ -87,14 +87,14 @@ const Bookshelf = () => {
         {filteredBooks.map((book) => (
           <div
             key={book._id}
-            className="shadow-xl rounded-3xl overflow-hidden group relative"
+            className="shadow-xl bg-gray-50 rounded-3xl overflow-hidden group relative"
           >
             {/* Book Cover */}
             <div className="overflow-hidden h-64">
               <img
                 src={book.cover_photo}
                 alt={book.book_title}
-                className="object-contain w-full h-full group-hover:scale-110 transition duration-300"
+                className="object-fit w-full h-full group-hover:scale-110 transition duration-300"
               />
             </div>
 
