@@ -68,7 +68,11 @@ const Profile = () => {
   };
 
   return (
-    <div className={`min-h-screen py-20 px-6 ${isDark ? "bg-gray-900" : "bg-white"}`}>
+    <div
+      className={`min-h-screen py-20 px-6 ${
+        isDark ? "bg-gray-900" : "bg-white"
+      }`}
+    >
       <div className="container mx-auto shadow-xl rounded-2xl p-8">
         <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
           <img
@@ -77,7 +81,11 @@ const Profile = () => {
             className="w-32 h-32 rounded-full object-cover border-4 border-indigo-500 shadow-lg"
           />
           <div className="text-center md:text-left">
-            <h2 className={`text-3xl font-bold ${isDark ? "text-indigo-300" : "text-indigo-700"}`}>
+            <h2
+              className={`text-3xl font-bold ${
+                isDark ? "text-indigo-300" : "text-indigo-700"
+              }`}
+            >
               {user?.displayName}
             </h2>
             <p className={`text-lg ${isDark ? "text-gray-300" : "text-black"}`}>
@@ -89,19 +97,33 @@ const Profile = () => {
         {/* Summary */}
         <div className="space-y-6">
           <div>
-            <h3 className={`text-xl font-semibold ${isDark ? "text-indigo-400" : "text-indigo-600"} mb-2`}>
+            <h3
+              className={`text-xl font-semibold ${
+                isDark ? "text-indigo-400" : "text-indigo-600"
+              } mb-2`}
+            >
               📚 Bookshelf Summary
             </h3>
-            <p className={`text-base ${isDark ? "text-gray-300" : "text-black"}`}>
+            <p
+              className={`text-base ${isDark ? "text-gray-300" : "text-black"}`}
+            >
               Total Books:{" "}
-              <span className={`font-bold ${isDark ? "text-gray-300" : "text-black"}`}>
+              <span
+                className={`font-bold ${
+                  isDark ? "text-gray-300" : "text-black"
+                }`}
+              >
                 {mybook.length}
               </span>
             </p>
           </div>
 
           <div>
-            <h4 className={`text-lg font-semibold ${isDark ? "text-indigo-400" : "text-indigo-600"} mb-2`}>
+            <h4
+              className={`text-lg font-semibold ${
+                isDark ? "text-indigo-400" : "text-indigo-600"
+              } mb-2`}
+            >
               Categories :
             </h4>
             {mybook.length !== 0 ? (
@@ -124,7 +146,9 @@ const Profile = () => {
                       data={chartData}
                       margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
                     >
-                      <CartesianGrid stroke={isDark ? "rgba(255,255,255,0.2)" : "3 3"} />
+                      <CartesianGrid
+                        stroke={isDark ? "rgba(255,255,255,0.2)" : "3 3"}
+                      />
                       <XAxis
                         dataKey="name"
                         stroke={isDark ? "#fff" : "#000"}
@@ -137,7 +161,10 @@ const Profile = () => {
                       <Bar
                         dataKey="value"
                         shape={<TriangleBar />}
-                        label={{ position: "top", fill: isDark ? "#fff" : "#000" }}
+                        label={{
+                          position: "top",
+                          fill: isDark ? "#fff" : "#000",
+                        }}
                       >
                         {chartData.map((entry, index) => (
                           <Cell
@@ -154,7 +181,11 @@ const Profile = () => {
               </>
             ) : (
               <div className="flex justify-center items-center bg-gray-100 rounded-2xl shadow-md h-24">
-                <p className={`${isDark ? "text-blue-800" : "text-blue-800"} font-bold`}>
+                <p
+                  className={`${
+                    isDark ? "text-blue-800" : "text-blue-800"
+                  } font-bold`}
+                >
                   You don't have any Categories
                 </p>
               </div>
