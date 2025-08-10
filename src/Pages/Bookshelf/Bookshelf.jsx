@@ -13,7 +13,12 @@ const Bookshelf = () => {
 
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 6;
+
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +43,7 @@ const Bookshelf = () => {
       );
     }
     setFilteredBooks(filteredData);
-    setCurrentPage(1); // Reset to first page after filter/search change
+    setCurrentPage(1); 
   }, [books, text, filterstatus]);
 
   const handleChange = (e) => {
@@ -49,7 +54,7 @@ const Bookshelf = () => {
     setFilterStatus(e.target.value);
   };
 
-  // Pagination calculations
+  
   const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentBooks = filteredBooks.slice(startIndex, startIndex + itemsPerPage);
@@ -81,16 +86,16 @@ const Bookshelf = () => {
             value={filterstatus}
             className="w-full px-6 py-3 rounded-full focus:outline-none focus:ring-2 shadow-sm"
           >
-            <option value="All">All Statuses</option>
-            <option value="Read">Read</option>
-            <option value="Reading">Reading</option>
-            <option value="Want-to-Read">Want-to-Read</option>
+            <option className="text-gray-500" value="All">All Statuses</option>
+            <option className="text-gray-500" value="Read">Read</option>
+            <option className="text-gray-500" value="Reading">Reading</option>
+            <option className="text-gray-500" value="Want-to-Read">Want-to-Read</option>
           </select>
         </div>
       </div>
 
       {/* Book Cards */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {currentBooks.map((book) => (
           <div
             key={book._id}
@@ -141,7 +146,7 @@ const Bookshelf = () => {
       {totalPages > 1 && (
         <div className="flex justify-center items-center gap-2 mt-10">
           <button
-          type="button"
+            type="button"
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((p) => p - 1)}
             className="px-3 py-1 bg-blue-700 rounded disabled:opacity-50"
@@ -151,7 +156,7 @@ const Bookshelf = () => {
 
           {[...Array(totalPages)].map((_, i) => (
             <button
-            type="button"
+              type="button"
               key={i}
               onClick={() => setCurrentPage(i + 1)}
               className={`px-3 py-1 rounded ${
@@ -165,7 +170,7 @@ const Bookshelf = () => {
           ))}
 
           <button
-          type="button"
+            type="button"
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage((p) => p + 1)}
             className="px-3 py-1 bg-blue-700 rounded disabled:opacity-50"
