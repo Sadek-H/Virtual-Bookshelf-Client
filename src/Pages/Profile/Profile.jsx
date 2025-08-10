@@ -154,7 +154,7 @@ const Profile = () => {
               </>
             ) : (
               <div className="flex justify-center items-center bg-gray-100 rounded-2xl shadow-md h-24">
-                <p className={`${isDark ? "text-white" : "text-blue-800"} font-bold`}>
+                <p className={`${isDark ? "text-blue-800" : "text-blue-800"} font-bold`}>
                   You don't have any Categories
                 </p>
               </div>
