@@ -5,9 +5,7 @@ import { ToastContainer } from "react-toastify";
 import SkeletonLoader from "../Pages/SkeletonLoader";
 import Footer from "../Pages/Home/Footer";
 const Homelayout = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -27,11 +25,11 @@ const Homelayout = () => {
         pauseOnHover
         theme="light"
       />
-           <Navbar theme={theme} setTheme={setTheme} /> 
+      <Navbar theme={theme} setTheme={setTheme} />
       <Suspense fallback={<SkeletonLoader />}>
-        <Outlet context={{ theme, setTheme }}/>
+        <Outlet context={{ theme, setTheme }} />
       </Suspense>
-     <Footer></Footer>
+      <Footer></Footer>
     </div>
   );
 };

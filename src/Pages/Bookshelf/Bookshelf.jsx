@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router"; 
+import { Link } from "react-router";
 import { AiFillLike } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
@@ -74,10 +74,18 @@ const Bookshelf = () => {
             value={filterstatus}
             className="w-full px-6 py-3 rounded-full focus:outline-none focus:ring-2 shadow-sm"
           >
-            <option className="text-gray-600" value="All">All Statuses</option>
-            <option className="text-gray-600" value="Read">Read</option>
-            <option className="text-gray-600" value="Reading">Reading</option>
-            <option className="text-gray-600" value="Want-to-Read">Want-to-Read</option>
+            <option className="text-gray-600" value="All">
+              All Statuses
+            </option>
+            <option className="text-gray-600" value="Read">
+              Read
+            </option>
+            <option className="text-gray-600" value="Reading">
+              Reading
+            </option>
+            <option className="text-gray-600" value="Want-to-Read">
+              Want-to-Read
+            </option>
           </select>
           {/* <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" /> */}
         </div>
@@ -100,9 +108,7 @@ const Bookshelf = () => {
 
             {/* Book Info */}
             <div className="p-4 space-y-2">
-              <h3 className="text-sm font-bold truncate">
-                {book.book_title}
-              </h3>
+              <h3 className="text-sm font-bold truncate">{book.book_title}</h3>
               <p className="text-sm text-gray-600 italic">
                 by {book.book_author}
               </p>
