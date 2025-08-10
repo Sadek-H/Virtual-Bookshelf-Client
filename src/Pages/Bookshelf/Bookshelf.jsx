@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { AiFillLike } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
-import { IoIosArrowDown } from "react-icons/io";
 import SkeletonLoader from "../SkeletonLoader";
 
 const Bookshelf = () => {
@@ -10,7 +9,11 @@ const Bookshelf = () => {
   const [filterstatus, setFilterStatus] = useState("All");
   const [text, setText] = useState("");
   const [filteredBooks, setFilteredBooks] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     setLoading(true);
@@ -19,12 +22,11 @@ const Bookshelf = () => {
       .then((data) => {
         setBooks(data);
         setFilteredBooks(data);
-        setLoading(false); // Set loading false after data is fetched
+        setLoading(false);
       });
   }, []);
 
   useEffect(() => {
-    // Filter books by search text and status
     let filteredData = books.filter(
       (book) =>
         book?.book_title.toLowerCase().includes(text.toLowerCase()) ||
@@ -36,6 +38,7 @@ const Bookshelf = () => {
       );
     }
     setFilteredBooks(filteredData);
+    setCurrentPage(1); // Reset to first page after filter/search change
   }, [books, text, filterstatus]);
 
   const handleChange = (e) => {
@@ -46,7 +49,11 @@ const Bookshelf = () => {
     setFilterStatus(e.target.value);
   };
 
-  // Show skeleton loader while loading
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentBooks = filteredBooks.slice(startIndex, startIndex + itemsPerPage);
+
   if (loading) {
     return <SkeletonLoader />;
   }
@@ -56,13 +63,13 @@ const Bookshelf = () => {
       {/* Search & Filter */}
       <div className="flex justify-center items-center gap-6 flex-wrap md:flex-nowrap mb-10">
         {/* Search */}
-        <div className="flex items-center w-full md:w-1/2  rounded-full px-4 py-2 shadow-sm">
+        <div className="flex items-center w-full md:w-1/2 rounded-full px-4 py-2 shadow-sm">
           <input
             type="text"
             value={text}
             onChange={handleChange}
             placeholder="Search by title or author..."
-            className=" w-full px-2 py-1 "
+            className="w-full px-2 py-1 outline-none focus:ring-0 focus:border-transparent"
           />
           <FaSearch className="text-pink-500" />
         </div>
@@ -74,25 +81,17 @@ const Bookshelf = () => {
             value={filterstatus}
             className="w-full px-6 py-3 rounded-full focus:outline-none focus:ring-2 shadow-sm"
           >
-            <option className="text-gray-600" value="All">
-              All Statuses
-            </option>
-            <option className="text-gray-600" value="Read">
-              Read
-            </option>
-            <option className="text-gray-600" value="Reading">
-              Reading
-            </option>
-            <option className="text-gray-600" value="Want-to-Read">
-              Want-to-Read
-            </option>
+            <option value="All">All Statuses</option>
+            <option value="Read">Read</option>
+            <option value="Reading">Reading</option>
+            <option value="Want-to-Read">Want-to-Read</option>
           </select>
-          {/* <IoIosArrowDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" /> */}
         </div>
       </div>
 
+      {/* Book Cards */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {filteredBooks.map((book) => (
+        {currentBooks.map((book) => (
           <div
             key={book._id}
             className="shadow-xl bg-gray-50 rounded-3xl overflow-hidden group relative"
@@ -108,7 +107,9 @@ const Bookshelf = () => {
 
             {/* Book Info */}
             <div className="p-4 space-y-2">
-              <h3 className="text-sm font-bold truncate text-gray-700">{book.book_title}</h3>
+              <h3 className="text-sm font-bold truncate text-gray-700">
+                {book.book_title}
+              </h3>
               <p className="text-sm text-gray-600 italic">
                 by {book.book_author}
               </p>
@@ -135,6 +136,44 @@ const Bookshelf = () => {
           </div>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center gap-2 mt-10">
+          <button
+          type="button"
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="px-3 py-1 bg-blue-700 rounded disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+            type="button"
+              key={i}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`px-3 py-1 rounded ${
+                currentPage === i + 1
+                  ? "bg-indigo-400 text-gray-600"
+                  : "bg-gray-400 hover:bg-gray-300"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+          type="button"
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="px-3 py-1 bg-blue-700 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
     </div>
   );
 };
