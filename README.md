@@ -2,8 +2,8 @@
 
 A modern web application to manage your personal bookshelf — built with **React**, **Vite**, **Tailwind CSS**, and **Firebase**.
 
-**🔗 Live Client:** [https://fir-job-4414a.web.app](https://fir-job-4414a.web.app)  
-**🔗 Live Server:** [https://virtual-bookshelf-server-sooty.vercel.app](https://virtual-bookshelf-server-sooty.vercel.app)
+**🔗 Live Site:** [https://project2-2d59b.web.app/](https://project2-2d59b.web.app/)
+
 
 ---
 
